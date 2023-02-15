@@ -1,9 +1,16 @@
 const express = require('express');
+const cors = require('cors');
+const helmet = require('helmet');
+const xss = require('xss-clean');
 
 const productRouter = require('./routes/productRoutes');
 const userRouter = require('./routes/userRoutes');
 
 const app = express();
+
+app.use(cors());
+app.use(helmet());
+app.use(xss());
 
 app.use(express.json());
 
